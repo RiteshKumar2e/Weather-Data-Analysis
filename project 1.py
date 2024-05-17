@@ -1,0 +1,17 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+weather_data = pd.read_csv('weather_data.csv')
+print("First few rows of the dataset:")
+print(weather_data.head())
+print("\nSummary statistics:")
+print(weather_data.describe())
+average_temperature = weather_data['MinTemp'].mean()
+print(f"\nAverage Temperature: {average_temperature:.2f}°C")
+plt.figure(figsize=(10, 6))
+weather_data.rename(columns={'Rainfall': 'precipitation'}, inplace=True)
+plt.scatter(weather_data['MinTemp'], weather_data['precipitation'], alpha=0.5)
+plt.title("Temperature vs Precipitation")
+plt.xlabel("Temperature (°C)")
+plt.ylabel("Precipitation (mm)")
+plt.grid(True)
+plt.show()
